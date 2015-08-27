@@ -1,0 +1,108 @@
+
+<!DOCTYPE html >
+<html lang="en" ng-app="ReditApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Reddit Dashboard</title>
+    <link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <script src="js/app.js"></script>
+
+
+  </head>
+
+  <body ng-controller="ReditSearch">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid" >
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Reddit Dashboard</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Clear</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" ng-submit="search()">>
+            <input type="text" ng-model="searchTerm" class="form-control" placeholder="Search...">
+            <button type="submit" style="position: absolute; left: -9999px"></button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid" >
+      <div class="row" >
+        <div class="col-sm-3 col-md-2 sidebar">
+          <h4>History {{2+2}}</h4>
+          <ul class="nav nav-sidebar" >
+            <li class="active" ng-repeat="searchItem in searchHistory"><a href="" class="deletex" >x</a><a href="">{{searchItem}}</a></li>
+            <!-- <li><a href="" class="deletex">x</a><a href="">Item 1</a></li>
+            <li><a href="" class="deletex">x</a><a href="">Item 2</a></li>
+            <li><a href="" class="deletex">x</a><a href="">Item 3</a></li>
+            <li><a href="" class="deletex">x</a><a href="">Item ...etc</a></li> -->
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2 class="sub-header">Featured Posts</h2>
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img ng-src="{{finalArray[0].data.url}}" class="img-responsive">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img ng-src="{{finalArray[1].data.url}}" class="img-responsive">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img ng-src="{{finalArray[2].data.url}}" class="img-responsive">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img ng-src="{{finalArray[3].data.url}}" class="img-responsive">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">All Posts</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>score</th>
+                  <th>author</th>
+                  <th>title</th>
+                  <th>permalink</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="search in finalArray">
+                  <td>{{search.data.id}}</td>
+                  <td>{{search.data.score}}</td>
+                  <td>{{search.data.author}}</td>
+                  <td>{{search.data.title}}</td>
+                  <td>{{search.data.permalink}}</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
